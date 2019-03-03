@@ -1,0 +1,21 @@
+{
+	"name": "intellexapps/color",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Ivan Sabo",
+			"email": "sabo@intellex.rs"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Intellex\\Color\\": "src\\"
+		}
+	},
+	"require": {
+		"php": ">=5.6"
+	},
+	"require-dev": {
+		"intellexapps/debugger": "*"
+	}
+}
