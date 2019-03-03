@@ -1,15 +1,11 @@
 # Color manipulation for PHP
 
-A single function to print out any variable type in an developer-friendly way.
-
-##### Features
-
 * Supports __RGB(A)__ and __CMY(K)__, with super easy conversion.
-* Predefined list __142__ named web colors.
 * __Modify__ initialized color using the available setters.
 * Output colors to __any format__, including every __CSS__ one.
 * Ability to __parse__ colors from any standard and __CSS__ notation.
-* Add __custom parsers__.
+* Extend parsing with your own __custom parsers__.
+* Predefined list of __142 named__ web colors.
 
 
 ##### Predefined lines
@@ -116,7 +112,7 @@ The <code>Parser::parse()</code> method will try the next parser and only throw 
 
 TODO
 --------------------
-1. Support for HSV
+1. Support for HSV.
 2. Detect color name by finding the most similar color in the predefined list.
 
 Licence

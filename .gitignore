@@ -9,7 +9,3 @@ Thumbs.db
 # Package managers
 composer.lock
 /vendor/
-
-# Always push empty
-!empty
-!.empty
