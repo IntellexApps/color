@@ -20,12 +20,13 @@ class Parser {
 	/**
 	 * Parse an input as a color.
 	 *
-	 * @param mixed $input The input to parse.
+	 * @param mixed $input   The input to parse.
+	 * @param mixed $default The default color if the input cannot be parsed.
 	 *
 	 * @return Color The parsed color.
 	 * @throws ColorCannotBeParsedException If the supplied input cannot be parsed.
 	 */
-	public static function parse($input) {
+	public static function parse($input, $default = null) {
 		static::init();
 		$exception = null;
 		try {
@@ -47,7 +48,14 @@ class Parser {
 			$exception = $ex;
 		}
 
-		throw new ColorCannotBeParsedException($input, null, $exception);
+		// Return the default color or raise an exception
+		if ($default !== null) {
+			return $default instanceof Color
+				? $default
+				: Parser::parse($default);
+		} else {
+			throw new ColorCannotBeParsedException($input, null, $exception);
+		}
 	}
 
 	/**

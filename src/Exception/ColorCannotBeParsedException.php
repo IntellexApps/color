@@ -7,7 +7,7 @@ use Intellex\Color\Parser\ColorParsing;
  *
  * @package Intellex\Color\Exception
  */
-class ColorCannotBeParsedException extends Exception {
+class ColorCannotBeParsedException extends \RuntimeException {
 
 	/** @var ColorParsing|null Optional parser that failed to parse the input. */
 	private $parser;
