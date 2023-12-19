@@ -1,0 +1,26 @@
+parameters:
+	level: 9
+	treatPhpDocTypesAsCertain: false
+	reportUnmatchedIgnoredErrors: false
+	checkGenericClassInNonGenericObjectType: false
+
+	bootstrapFiles:
+		- bootstrap.php
+
+	ignoreErrors:
+
+		# Allow missing types for test methods
+		- message: '~^Method (\w+\\)*\w+Test::test\w+\(\) has parameter \$\w+ with no ~'
+
+		# Allow casting mixed type
+		- message: '~^Cannot cast mixed to (string|int|float|bool)\.$~'
+		- message: '~^Part \$\w+ \(mixed\) of encapsed string cannot be cast to string\.$~'
+
+		# Allow access to all properties on anonymous objects
+		- message: '~^Access to an undefined property object::\$\w+\.$~'
+
+		# JsonSerialize implementations do not require specified arrays
+		- message: '~^Method (\w+\\)*\w+::jsonSerialize\(\) return type has no value type specified in iterable type array\.$~'
+
+		# Allow parent class to reference its sub classes
+		- message: '~^Method (\w+\\)*\w+::\w+\(\) should return ((\w+) of ((\w+\\)*\w+)) but returns \$this\(\4<\2>\).$~'

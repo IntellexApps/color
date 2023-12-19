@@ -1,296 +1,723 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php declare(strict_types = 1);
 
 namespace Intellex\Color\Predefined;
 
+use Intellex\Color\Colors\RGBA as ColorRGBA;
+
 /**
- * Class RGBA contains the list of all predefined RGBA colors.
+ * Contains the list of all predefined RGBA colors.
  *
- * @package Intellex\Color\Predefined
+ * @phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
  */
-class RGBA {
-
-	static final function Transparent() { return new \Intellex\Color\RGBA(0, 0, 0, 1); }
-
-	static final function AliceBlue() { return new \Intellex\Color\RGBA(240, 248, 255); }
-
-	static final function Amethyst() { return new \Intellex\Color\RGBA(153, 102, 204); }
-
-	static final function AntiqueWhite() { return new \Intellex\Color\RGBA(250, 235, 215); }
-
-	static final function Aqua() { return new \Intellex\Color\RGBA(0, 255, 255); }
-
-	static final function Aquamarine() { return new \Intellex\Color\RGBA(127, 255, 212); }
-
-	static final function Azure() { return new \Intellex\Color\RGBA(240, 255, 255); }
-
-	static final function Beige() { return new \Intellex\Color\RGBA(245, 245, 220); }
-
-	static final function Bisque() { return new \Intellex\Color\RGBA(255, 228, 196); }
-
-	static final function Black() { return new \Intellex\Color\RGBA(0, 0, 0); }
-
-	static final function BlanchedAlmond() { return new \Intellex\Color\RGBA(255, 235, 205); }
-
-	static final function Blue() { return new \Intellex\Color\RGBA(0, 0, 255); }
-
-	static final function BlueViolet() { return new \Intellex\Color\RGBA(138, 43, 226); }
-
-	static final function Brown() { return new \Intellex\Color\RGBA(165, 42, 42); }
-
-	static final function BurlyWood() { return new \Intellex\Color\RGBA(222, 184, 135); }
-
-	static final function CadetBlue() { return new \Intellex\Color\RGBA(95, 158, 160); }
-
-	static final function Chartreuse() { return new \Intellex\Color\RGBA(127, 255, 0); }
-
-	static final function Chocolate() { return new \Intellex\Color\RGBA(210, 105, 30); }
-
-	static final function Coral() { return new \Intellex\Color\RGBA(255, 127, 80); }
-
-	static final function CornflowerBlue() { return new \Intellex\Color\RGBA(100, 149, 237); }
-
-	static final function Cornsilk() { return new \Intellex\Color\RGBA(255, 248, 220); }
-
-	static final function Crimson() { return new \Intellex\Color\RGBA(220, 20, 60); }
-
-	static final function Cyan() { return new \Intellex\Color\RGBA(0, 255, 255); }
-
-	static final function DarkBlue() { return new \Intellex\Color\RGBA(0, 0, 139); }
-
-	static final function DarkCyan() { return new \Intellex\Color\RGBA(0, 139, 139); }
-
-	static final function DarkGoldenrod() { return new \Intellex\Color\RGBA(184, 134, 11); }
-
-	static final function DarkGray() { return new \Intellex\Color\RGBA(169, 169, 169); }
-
-	static final function DarkGreen() { return new \Intellex\Color\RGBA(0, 100, 0); }
-
-	static final function DarkKhaki() { return new \Intellex\Color\RGBA(189, 183, 107); }
-
-	static final function DarkMagenta() { return new \Intellex\Color\RGBA(139, 0, 139); }
-
-	static final function DarkOliveGreen() { return new \Intellex\Color\RGBA(85, 107, 47); }
-
-	static final function DarkOrange() { return new \Intellex\Color\RGBA(255, 140, 0); }
-
-	static final function DarkOrchid() { return new \Intellex\Color\RGBA(153, 50, 204); }
-
-	static final function DarkRed() { return new \Intellex\Color\RGBA(139, 0, 0); }
-
-	static final function DarkSalmon() { return new \Intellex\Color\RGBA(233, 150, 122); }
-
-	static final function DarkSeaGreen() { return new \Intellex\Color\RGBA(143, 188, 143); }
-
-	static final function DarkSlateBlue() { return new \Intellex\Color\RGBA(72, 61, 139); }
-
-	static final function DarkSlateGray() { return new \Intellex\Color\RGBA(47, 79, 79); }
-
-	static final function DarkTurquoise() { return new \Intellex\Color\RGBA(0, 206, 209); }
-
-	static final function DarkViolet() { return new \Intellex\Color\RGBA(148, 0, 211); }
-
-	static final function DeepPink() { return new \Intellex\Color\RGBA(255, 20, 147); }
-
-	static final function DeepSkyBlue() { return new \Intellex\Color\RGBA(0, 191, 255); }
-
-	static final function DimGray() { return new \Intellex\Color\RGBA(105, 105, 105); }
-
-	static final function DodgerBlue() { return new \Intellex\Color\RGBA(30, 144, 255); }
-
-	static final function FireBrick() { return new \Intellex\Color\RGBA(178, 34, 34); }
-
-	static final function FloralWhite() { return new \Intellex\Color\RGBA(255, 250, 240); }
-
-	static final function ForestGreen() { return new \Intellex\Color\RGBA(34, 139, 34); }
-
-	static final function Fuchsia() { return new \Intellex\Color\RGBA(255, 0, 255); }
-
-	static final function Gainsboro() { return new \Intellex\Color\RGBA(220, 220, 220); }
-
-	static final function GhostWhite() { return new \Intellex\Color\RGBA(248, 248, 255); }
-
-	static final function Gold() { return new \Intellex\Color\RGBA(255, 215, 0); }
-
-	static final function Goldenrod() { return new \Intellex\Color\RGBA(218, 165, 32); }
-
-	static final function Gray() { return new \Intellex\Color\RGBA(128, 128, 128); }
-
-	static final function Green() { return new \Intellex\Color\RGBA(0, 128, 0); }
-
-	static final function GreenYellow() { return new \Intellex\Color\RGBA(173, 255, 47); }
-
-	static final function Honeydew() { return new \Intellex\Color\RGBA(240, 255, 240); }
-
-	static final function HotPink() { return new \Intellex\Color\RGBA(255, 105, 180); }
-
-	static final function IndianRed() { return new \Intellex\Color\RGBA(205, 92, 92); }
-
-	static final function Indigo() { return new \Intellex\Color\RGBA(75, 0, 130); }
-
-	static final function Ivory() { return new \Intellex\Color\RGBA(255, 255, 240); }
-
-	static final function Khaki() { return new \Intellex\Color\RGBA(240, 230, 140); }
-
-	static final function Lavender() { return new \Intellex\Color\RGBA(230, 230, 250); }
-
-	static final function LavenderBlush() { return new \Intellex\Color\RGBA(255, 240, 245); }
-
-	static final function LawnGreen() { return new \Intellex\Color\RGBA(124, 252, 0); }
-
-	static final function LemonChiffon() { return new \Intellex\Color\RGBA(255, 250, 205); }
-
-	static final function LightBlue() { return new \Intellex\Color\RGBA(173, 216, 230); }
-
-	static final function LightCoral() { return new \Intellex\Color\RGBA(240, 128, 128); }
-
-	static final function LightCyan() { return new \Intellex\Color\RGBA(224, 255, 255); }
-
-	static final function LightGoldenrodYellow() { return new \Intellex\Color\RGBA(250, 250, 210); }
-
-	static final function LightGreen() { return new \Intellex\Color\RGBA(144, 238, 144); }
-
-	static final function LightGrey() { return new \Intellex\Color\RGBA(211, 211, 211); }
-
-	static final function LightPink() { return new \Intellex\Color\RGBA(255, 182, 193); }
-
-	static final function LightSalmon() { return new \Intellex\Color\RGBA(255, 160, 122); }
-
-	static final function LightSeaGreen() { return new \Intellex\Color\RGBA(32, 178, 170); }
-
-	static final function LightSkyBlue() { return new \Intellex\Color\RGBA(135, 206, 250); }
-
-	static final function LightSlateGray() { return new \Intellex\Color\RGBA(119, 136, 153); }
-
-	static final function LightSteelBlue() { return new \Intellex\Color\RGBA(176, 196, 222); }
-
-	static final function LightYellow() { return new \Intellex\Color\RGBA(255, 255, 224); }
-
-	static final function Lime() { return new \Intellex\Color\RGBA(0, 255, 0); }
-
-	static final function LimeGreen() { return new \Intellex\Color\RGBA(50, 205, 50); }
-
-	static final function Linen() { return new \Intellex\Color\RGBA(250, 240, 230); }
-
-	static final function Magenta() { return new \Intellex\Color\RGBA(255, 0, 255); }
-
-	static final function Maroon() { return new \Intellex\Color\RGBA(128, 0, 0); }
-
-	static final function MediumAquamarine() { return new \Intellex\Color\RGBA(102, 205, 170); }
-
-	static final function MediumBlue() { return new \Intellex\Color\RGBA(0, 0, 205); }
-
-	static final function MediumOrchid() { return new \Intellex\Color\RGBA(186, 85, 211); }
-
-	static final function MediumPurple() { return new \Intellex\Color\RGBA(147, 112, 219); }
-
-	static final function MediumSeaGreen() { return new \Intellex\Color\RGBA(60, 179, 113); }
-
-	static final function MediumSlateBlue() { return new \Intellex\Color\RGBA(123, 104, 238); }
-
-	static final function MediumSpringGreen() { return new \Intellex\Color\RGBA(0, 250, 154); }
-
-	static final function MediumTurquoise() { return new \Intellex\Color\RGBA(72, 209, 204); }
-
-	static final function MediumVioletRed() { return new \Intellex\Color\RGBA(199, 21, 133); }
-
-	static final function MidnightBlue() { return new \Intellex\Color\RGBA(25, 25, 112); }
-
-	static final function MintCream() { return new \Intellex\Color\RGBA(245, 255, 250); }
-
-	static final function MistyRose() { return new \Intellex\Color\RGBA(255, 228, 225); }
-
-	static final function Moccasin() { return new \Intellex\Color\RGBA(255, 228, 181); }
-
-	static final function NavajoWhite() { return new \Intellex\Color\RGBA(255, 222, 173); }
-
-	static final function Navy() { return new \Intellex\Color\RGBA(0, 0, 128); }
-
-	static final function OldLace() { return new \Intellex\Color\RGBA(253, 245, 230); }
-
-	static final function Olive() { return new \Intellex\Color\RGBA(128, 128, 0); }
-
-	static final function OliveDrab() { return new \Intellex\Color\RGBA(107, 142, 35); }
-
-	static final function Orange() { return new \Intellex\Color\RGBA(255, 165, 0); }
-
-	static final function OrangeRed() { return new \Intellex\Color\RGBA(255, 69, 0); }
-
-	static final function Orchid() { return new \Intellex\Color\RGBA(218, 112, 214); }
-
-	static final function PaleGoldenrod() { return new \Intellex\Color\RGBA(238, 232, 170); }
-
-	static final function PaleGreen() { return new \Intellex\Color\RGBA(152, 251, 152); }
-
-	static final function PaleTurquoise() { return new \Intellex\Color\RGBA(175, 238, 238); }
-
-	static final function PaleVioletRed() { return new \Intellex\Color\RGBA(219, 112, 147); }
-
-	static final function PapayaWhip() { return new \Intellex\Color\RGBA(255, 239, 213); }
-
-	static final function PeachPuff() { return new \Intellex\Color\RGBA(255, 218, 185); }
-
-	static final function Peru() { return new \Intellex\Color\RGBA(205, 133, 63); }
-
-	static final function Pink() { return new \Intellex\Color\RGBA(255, 192, 203); }
-
-	static final function Plum() { return new \Intellex\Color\RGBA(221, 160, 221); }
-
-	static final function PowderBlue() { return new \Intellex\Color\RGBA(176, 224, 230); }
-
-	static final function Purple() { return new \Intellex\Color\RGBA(128, 0, 128); }
-
-	static final function Red() { return new \Intellex\Color\RGBA(255, 0, 0); }
-
-	static final function RosyBrown() { return new \Intellex\Color\RGBA(188, 143, 143); }
-
-	static final function RoyalBlue() { return new \Intellex\Color\RGBA(65, 105, 225); }
-
-	static final function SaddleBrown() { return new \Intellex\Color\RGBA(139, 69, 19); }
-
-	static final function Salmon() { return new \Intellex\Color\RGBA(250, 128, 114); }
-
-	static final function SandyBrown() { return new \Intellex\Color\RGBA(244, 164, 96); }
-
-	static final function SeaGreen() { return new \Intellex\Color\RGBA(46, 139, 87); }
-
-	static final function Seashell() { return new \Intellex\Color\RGBA(255, 245, 238); }
-
-	static final function Sienna() { return new \Intellex\Color\RGBA(160, 82, 45); }
-
-	static final function Silver() { return new \Intellex\Color\RGBA(192, 192, 192); }
-
-	static final function SkyBlue() { return new \Intellex\Color\RGBA(135, 206, 235); }
-
-	static final function SlateBlue() { return new \Intellex\Color\RGBA(106, 90, 205); }
-
-	static final function SlateGray() { return new \Intellex\Color\RGBA(112, 128, 144); }
-
-	static final function Snow() { return new \Intellex\Color\RGBA(255, 250, 250); }
-
-	static final function SpringGreen() { return new \Intellex\Color\RGBA(0, 255, 127); }
-
-	static final function SteelBlue() { return new \Intellex\Color\RGBA(70, 130, 180); }
-
-	static final function Tan() { return new \Intellex\Color\RGBA(210, 180, 140); }
-
-	static final function Teal() { return new \Intellex\Color\RGBA(0, 128, 128); }
-
-	static final function Thistle() { return new \Intellex\Color\RGBA(216, 191, 216); }
-
-	static final function Tomato() { return new \Intellex\Color\RGBA(255, 99, 71); }
-
-	static final function Turquoise() { return new \Intellex\Color\RGBA(64, 224, 208); }
-
-	static final function Violet() { return new \Intellex\Color\RGBA(238, 130, 238); }
-
-	static final function Wheat() { return new \Intellex\Color\RGBA(245, 222, 179); }
-
-	static final function White() { return new \Intellex\Color\RGBA(255, 255, 255); }
-
-	static final function WhiteSmoke() { return new \Intellex\Color\RGBA(245, 245, 245); }
-
-	static final function Yellow() { return new \Intellex\Color\RGBA(255, 255, 0); }
-
-	static final function YellowGreen() { return new \Intellex\Color\RGBA(154, 205, 50); }
-
+final class RGBA {
+
+	/** @noinspection PhpUnused */
+	public static function Transparent(): ColorRGBA {
+		return new ColorRGBA(0, 0, 0, 1);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function AliceBlue(): ColorRGBA {
+		return new ColorRGBA(240, 248, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Amethyst(): ColorRGBA {
+		return new ColorRGBA(153, 102, 204);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function AntiqueWhite(): ColorRGBA {
+		return new ColorRGBA(250, 235, 215);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Aqua(): ColorRGBA {
+		return new ColorRGBA(0, 255, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Aquamarine(): ColorRGBA {
+		return new ColorRGBA(127, 255, 212);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Azure(): ColorRGBA {
+		return new ColorRGBA(240, 255, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Beige(): ColorRGBA {
+		return new ColorRGBA(245, 245, 220);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Bisque(): ColorRGBA {
+		return new ColorRGBA(255, 228, 196);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Black(): ColorRGBA {
+		return new ColorRGBA(0, 0, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function BlanchedAlmond(): ColorRGBA {
+		return new ColorRGBA(255, 235, 205);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Blue(): ColorRGBA {
+		return new ColorRGBA(0, 0, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function BlueViolet(): ColorRGBA {
+		return new ColorRGBA(138, 43, 226);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Brown(): ColorRGBA {
+		return new ColorRGBA(165, 42, 42);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function BurlyWood(): ColorRGBA {
+		return new ColorRGBA(222, 184, 135);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function CadetBlue(): ColorRGBA {
+		return new ColorRGBA(95, 158, 160);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Chartreuse(): ColorRGBA {
+		return new ColorRGBA(127, 255, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Chocolate(): ColorRGBA {
+		return new ColorRGBA(210, 105, 30);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Coral(): ColorRGBA {
+		return new ColorRGBA(255, 127, 80);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function CornflowerBlue(): ColorRGBA {
+		return new ColorRGBA(100, 149, 237);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Cornsilk(): ColorRGBA {
+		return new ColorRGBA(255, 248, 220);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Crimson(): ColorRGBA {
+		return new ColorRGBA(220, 20, 60);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Cyan(): ColorRGBA {
+		return new ColorRGBA(0, 255, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkBlue(): ColorRGBA {
+		return new ColorRGBA(0, 0, 139);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkCyan(): ColorRGBA {
+		return new ColorRGBA(0, 139, 139);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkGoldenrod(): ColorRGBA {
+		return new ColorRGBA(184, 134, 11);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkGray(): ColorRGBA {
+		return new ColorRGBA(169, 169, 169);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkGreen(): ColorRGBA {
+		return new ColorRGBA(0, 100, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkKhaki(): ColorRGBA {
+		return new ColorRGBA(189, 183, 107);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkMagenta(): ColorRGBA {
+		return new ColorRGBA(139, 0, 139);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkOliveGreen(): ColorRGBA {
+		return new ColorRGBA(85, 107, 47);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkOrange(): ColorRGBA {
+		return new ColorRGBA(255, 140, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkOrchid(): ColorRGBA {
+		return new ColorRGBA(153, 50, 204);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkRed(): ColorRGBA {
+		return new ColorRGBA(139, 0, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkSalmon(): ColorRGBA {
+		return new ColorRGBA(233, 150, 122);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkSeaGreen(): ColorRGBA {
+		return new ColorRGBA(143, 188, 143);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkSlateBlue(): ColorRGBA {
+		return new ColorRGBA(72, 61, 139);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkSlateGray(): ColorRGBA {
+		return new ColorRGBA(47, 79, 79);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkTurquoise(): ColorRGBA {
+		return new ColorRGBA(0, 206, 209);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DarkViolet(): ColorRGBA {
+		return new ColorRGBA(148, 0, 211);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DeepPink(): ColorRGBA {
+		return new ColorRGBA(255, 20, 147);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DeepSkyBlue(): ColorRGBA {
+		return new ColorRGBA(0, 191, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DimGray(): ColorRGBA {
+		return new ColorRGBA(105, 105, 105);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function DodgerBlue(): ColorRGBA {
+		return new ColorRGBA(30, 144, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function FireBrick(): ColorRGBA {
+		return new ColorRGBA(178, 34, 34);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function FloralWhite(): ColorRGBA {
+		return new ColorRGBA(255, 250, 240);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function ForestGreen(): ColorRGBA {
+		return new ColorRGBA(34, 139, 34);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Fuchsia(): ColorRGBA {
+		return new ColorRGBA(255, 0, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Gainsboro(): ColorRGBA {
+		return new ColorRGBA(220, 220, 220);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function GhostWhite(): ColorRGBA {
+		return new ColorRGBA(248, 248, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Gold(): ColorRGBA {
+		return new ColorRGBA(255, 215, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Goldenrod(): ColorRGBA {
+		return new ColorRGBA(218, 165, 32);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Gray(): ColorRGBA {
+		return new ColorRGBA(128, 128, 128);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Green(): ColorRGBA {
+		return new ColorRGBA(0, 128, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function GreenYellow(): ColorRGBA {
+		return new ColorRGBA(173, 255, 47);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Honeydew(): ColorRGBA {
+		return new ColorRGBA(240, 255, 240);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function HotPink(): ColorRGBA {
+		return new ColorRGBA(255, 105, 180);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function IndianRed(): ColorRGBA {
+		return new ColorRGBA(205, 92, 92);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Indigo(): ColorRGBA {
+		return new ColorRGBA(75, 0, 130);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Ivory(): ColorRGBA {
+		return new ColorRGBA(255, 255, 240);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Khaki(): ColorRGBA {
+		return new ColorRGBA(240, 230, 140);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Lavender(): ColorRGBA {
+		return new ColorRGBA(230, 230, 250);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LavenderBlush(): ColorRGBA {
+		return new ColorRGBA(255, 240, 245);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LawnGreen(): ColorRGBA {
+		return new ColorRGBA(124, 252, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LemonChiffon(): ColorRGBA {
+		return new ColorRGBA(255, 250, 205);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightBlue(): ColorRGBA {
+		return new ColorRGBA(173, 216, 230);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightCoral(): ColorRGBA {
+		return new ColorRGBA(240, 128, 128);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightCyan(): ColorRGBA {
+		return new ColorRGBA(224, 255, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightGoldenrodYellow(): ColorRGBA {
+		return new ColorRGBA(250, 250, 210);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightGreen(): ColorRGBA {
+		return new ColorRGBA(144, 238, 144);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightGrey(): ColorRGBA {
+		return new ColorRGBA(211, 211, 211);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightPink(): ColorRGBA {
+		return new ColorRGBA(255, 182, 193);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightSalmon(): ColorRGBA {
+		return new ColorRGBA(255, 160, 122);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightSeaGreen(): ColorRGBA {
+		return new ColorRGBA(32, 178, 170);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightSkyBlue(): ColorRGBA {
+		return new ColorRGBA(135, 206, 250);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightSlateGray(): ColorRGBA {
+		return new ColorRGBA(119, 136, 153);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightSteelBlue(): ColorRGBA {
+		return new ColorRGBA(176, 196, 222);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LightYellow(): ColorRGBA {
+		return new ColorRGBA(255, 255, 224);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Lime(): ColorRGBA {
+		return new ColorRGBA(0, 255, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function LimeGreen(): ColorRGBA {
+		return new ColorRGBA(50, 205, 50);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Linen(): ColorRGBA {
+		return new ColorRGBA(250, 240, 230);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Magenta(): ColorRGBA {
+		return new ColorRGBA(255, 0, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Maroon(): ColorRGBA {
+		return new ColorRGBA(128, 0, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumAquamarine(): ColorRGBA {
+		return new ColorRGBA(102, 205, 170);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumBlue(): ColorRGBA {
+		return new ColorRGBA(0, 0, 205);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumOrchid(): ColorRGBA {
+		return new ColorRGBA(186, 85, 211);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumPurple(): ColorRGBA {
+		return new ColorRGBA(147, 112, 219);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumSeaGreen(): ColorRGBA {
+		return new ColorRGBA(60, 179, 113);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumSlateBlue(): ColorRGBA {
+		return new ColorRGBA(123, 104, 238);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumSpringGreen(): ColorRGBA {
+		return new ColorRGBA(0, 250, 154);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumTurquoise(): ColorRGBA {
+		return new ColorRGBA(72, 209, 204);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MediumVioletRed(): ColorRGBA {
+		return new ColorRGBA(199, 21, 133);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MidnightBlue(): ColorRGBA {
+		return new ColorRGBA(25, 25, 112);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MintCream(): ColorRGBA {
+		return new ColorRGBA(245, 255, 250);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function MistyRose(): ColorRGBA {
+		return new ColorRGBA(255, 228, 225);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Moccasin(): ColorRGBA {
+		return new ColorRGBA(255, 228, 181);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function NavajoWhite(): ColorRGBA {
+		return new ColorRGBA(255, 222, 173);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Navy(): ColorRGBA {
+		return new ColorRGBA(0, 0, 128);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function OldLace(): ColorRGBA {
+		return new ColorRGBA(253, 245, 230);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Olive(): ColorRGBA {
+		return new ColorRGBA(128, 128, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function OliveDrab(): ColorRGBA {
+		return new ColorRGBA(107, 142, 35);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Orange(): ColorRGBA {
+		return new ColorRGBA(255, 165, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function OrangeRed(): ColorRGBA {
+		return new ColorRGBA(255, 69, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Orchid(): ColorRGBA {
+		return new ColorRGBA(218, 112, 214);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PaleGoldenrod(): ColorRGBA {
+		return new ColorRGBA(238, 232, 170);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PaleGreen(): ColorRGBA {
+		return new ColorRGBA(152, 251, 152);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PaleTurquoise(): ColorRGBA {
+		return new ColorRGBA(175, 238, 238);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PaleVioletRed(): ColorRGBA {
+		return new ColorRGBA(219, 112, 147);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PapayaWhip(): ColorRGBA {
+		return new ColorRGBA(255, 239, 213);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PeachPuff(): ColorRGBA {
+		return new ColorRGBA(255, 218, 185);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Peru(): ColorRGBA {
+		return new ColorRGBA(205, 133, 63);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Pink(): ColorRGBA {
+		return new ColorRGBA(255, 192, 203);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Plum(): ColorRGBA {
+		return new ColorRGBA(221, 160, 221);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function PowderBlue(): ColorRGBA {
+		return new ColorRGBA(176, 224, 230);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Purple(): ColorRGBA {
+		return new ColorRGBA(128, 0, 128);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Red(): ColorRGBA {
+		return new ColorRGBA(255, 0, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function RosyBrown(): ColorRGBA {
+		return new ColorRGBA(188, 143, 143);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function RoyalBlue(): ColorRGBA {
+		return new ColorRGBA(65, 105, 225);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SaddleBrown(): ColorRGBA {
+		return new ColorRGBA(139, 69, 19);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Salmon(): ColorRGBA {
+		return new ColorRGBA(250, 128, 114);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SandyBrown(): ColorRGBA {
+		return new ColorRGBA(244, 164, 96);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SeaGreen(): ColorRGBA {
+		return new ColorRGBA(46, 139, 87);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Seashell(): ColorRGBA {
+		return new ColorRGBA(255, 245, 238);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Sienna(): ColorRGBA {
+		return new ColorRGBA(160, 82, 45);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Silver(): ColorRGBA {
+		return new ColorRGBA(192, 192, 192);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SkyBlue(): ColorRGBA {
+		return new ColorRGBA(135, 206, 235);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SlateBlue(): ColorRGBA {
+		return new ColorRGBA(106, 90, 205);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SlateGray(): ColorRGBA {
+		return new ColorRGBA(112, 128, 144);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Snow(): ColorRGBA {
+		return new ColorRGBA(255, 250, 250);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SpringGreen(): ColorRGBA {
+		return new ColorRGBA(0, 255, 127);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function SteelBlue(): ColorRGBA {
+		return new ColorRGBA(70, 130, 180);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Tan(): ColorRGBA {
+		return new ColorRGBA(210, 180, 140);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Teal(): ColorRGBA {
+		return new ColorRGBA(0, 128, 128);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Thistle(): ColorRGBA {
+		return new ColorRGBA(216, 191, 216);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Tomato(): ColorRGBA {
+		return new ColorRGBA(255, 99, 71);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Turquoise(): ColorRGBA {
+		return new ColorRGBA(64, 224, 208);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Violet(): ColorRGBA {
+		return new ColorRGBA(238, 130, 238);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Wheat(): ColorRGBA {
+		return new ColorRGBA(245, 222, 179);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function White(): ColorRGBA {
+		return new ColorRGBA(255, 255, 255);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function WhiteSmoke(): ColorRGBA {
+		return new ColorRGBA(245, 245, 245);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function Yellow(): ColorRGBA {
+		return new ColorRGBA(255, 255, 0);
+	}
+
+	/** @noinspection PhpUnused */
+	public static function YellowGreen(): ColorRGBA {
+		return new ColorRGBA(154, 205, 50);
+	}
 }

@@ -1,11 +1,15 @@
-<?php namespace Intellex\Color\Parser;
+<?php declare(strict_types = 1);
 
-use Intellex\Color\Color;
-use Intellex\Color\Exception\ColorCannotBeParsedException;
-use Intellex\Color\RGBA;
+namespace Intellex\Color\Parsers;
+
+use Exception;
+use Intellex\Color\Colors\Color;
+use Intellex\Color\Colors\RGBA;
+use Intellex\Color\Exception\ColorCannotBeParsed;
+use RuntimeException;
 
 /**
- * Class StringRGBPlugin parses an RGB string into a color.
+ * Parses an RGB string into a color.
  * Supports the following formats, where each letter is represented with a hexadecimal number, case
  * insensitive:
  *  - RGB
@@ -16,10 +20,8 @@ use Intellex\Color\RGBA;
  *  - #ARGB
  *  - #RRGGBB
  *  - #AARRGGBB
- *
- * @package Intellex\Color\Plugin
  */
-class RGBStringParser implements ColorParsing {
+class RGBAStringParser implements AbstractColorParser {
 
 	/**
 	 * Parse the supplied input as a color.
@@ -27,18 +29,13 @@ class RGBStringParser implements ColorParsing {
 	 * @param string $input The input to try to parse.
 	 *
 	 * @return Color The parsed color.
-	 * @throws ColorCannotBeParsedException If the supplied input cannot be parsed into a color.
+	 * @throws ColorCannotBeParsed If the supplied input cannot be parsed into a color.
 	 */
-	public function parse($input) {
+	public function parse($input): Color {
 		try {
 
-			// Assert the supplied input is a string
-			if (!is_string($input)) {
-				throw new \Exception('Input is not a string');
-			}
-
 			// Clean up the input
-			$input = ltrim(trim($input), '# ');
+			$input = ltrim(trim((string) $input), '# ');
 
 			// Define common regexp elements
 			$len = strlen($input) > 4 ? 2 : 1;
@@ -47,22 +44,15 @@ class RGBStringParser implements ColorParsing {
 			// Match
 			if (preg_match("~^(?'alpha'{$hex})?(?'red'{$hex})(?'green'{$hex})(?'blue'{$hex})$~ i", $input, $color)) {
 
-				/**
-				 * @var string $alpha
-				 * @var string $red
-				 * @var string $green
-				 * @var string $blue
-				 */
-				extract($color);
-
-				// Handle optional alpha value
-				if ($alpha === '') {
-					$alpha = str_repeat('0', $len);
-				}
+				// Extract values
+				$red = $color['red'];
+				$green = $color['green'];
+				$blue = $color['blue'];
+				$alpha = $color['alpha'] ?: str_repeat('F', $len);
 
 				// Handle the digit number per number
 				if (strlen($alpha) + strlen($red) + strlen($green) + strlen($blue) !== $len * 4) {
-					throw new \Exception('Wrong lengths');
+					throw new RuntimeException('Wrong length');
 				}
 
 				// Return the color
@@ -72,13 +62,12 @@ class RGBStringParser implements ColorParsing {
 					static::hexToDec($blue),
 					static::hexToDec($alpha) / 255
 				);
-
-			} else {
-				throw new \Exception('Unable to extract the values');
 			}
 
-		} catch (\Exception $ex) {
-			throw new ColorCannotBeParsedException($input, $this, $ex);
+			throw new RuntimeException('Unable to extract the values');
+
+		} catch (Exception $ex) {
+			throw new ColorCannotBeParsed($input, $this, $ex);
 		}
 	}
 
@@ -90,7 +79,7 @@ class RGBStringParser implements ColorParsing {
 	 *
 	 * @return int The decimal value of the supplied hexadecimal number.
 	 */
-	private static function hexToDec($hex) {
+	public static function hexToDec(string $hex): int {
 
 		// Handle minimal length
 		if (strlen($hex) === 1) {
@@ -98,7 +87,6 @@ class RGBStringParser implements ColorParsing {
 		}
 
 		// Convert to decimal
-		return hexdec($hex);
+		return (int) hexdec($hex);
 	}
-
 }
